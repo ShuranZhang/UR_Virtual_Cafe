@@ -1,5 +1,3 @@
-# UR_Virtual_Cafe
-Web Programming Final Project
 To Run the Project
 cd to the project directory
 python3 -m venv auth
