@@ -12,3 +12,8 @@ def index():
 @login_required
 def forum():
     return render_template('forum.html', name=current_user.name)
+
+@main.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', current_user=current_user)

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+	<h1 class="title">
+		Profile Udpate for {{ user.name }}
+	</h1>
+	<form name ="pro_form" METHOD="POST" action="{{ url_for('auth.update', id = user.id, _external=True) }}">
+		<div class="form-group">
+			<input class="form-control" type="email" name="email" placeholder="New Email" autofocus="" value={{ user.email}}>
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="text" name="name" placeholder="New Name" autofocus="" value={{ user.name }}>
+		</div>
+		<div class="form-group">
+			<input class="form-control" type="password" name="oldpassword" placeholder="Old Password">
+			<input class="form-control" type="password" name="password" placeholder="New Password">
+		</div>
+		<button type="submit" class="btn btn-primary">Update</button>
+	</form>
+</div>
+
+{% endblock %}
