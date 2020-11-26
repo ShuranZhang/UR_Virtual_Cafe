@@ -2,7 +2,7 @@ To Create Database
 ------------------------------------------------
 first enter python interactive
 
-from project import d, create_app
+from project import db, create_app
 
 db.create_all(app=create_app())
 
@@ -33,7 +33,7 @@ auth\Scripts\activate
 
 set FLASK_APP=project
 
-export FLASK_ENV=development
+set FLASK_ENV=development
 
 pip install -r requirements.txt
 
