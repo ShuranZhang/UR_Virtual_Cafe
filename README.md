@@ -1,7 +1,9 @@
 To Create Database
 ------------------------------------------------
 first enter python interactive
+
 from project import d, create_app
+
 db.create_all(app=create_app())
 
 To Run the Project on Mac
