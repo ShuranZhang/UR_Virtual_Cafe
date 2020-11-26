@@ -6,15 +6,17 @@
 	{{ name }}, Welcome to the UR Virtual Cafe
 	</h1>
 	{% for post in posts %}
-	A new post!
 	<article class="media content-section">
 	 
 	  <div class="media-body">
+		<h3>{{ post.title }}</h3>
+		<p>by {{ post.author.name}} on {{ post.date_posted.strftime('%m/%d/%Y') }}</p>
+		
 		<p class="article-content">{{ post.content }}</p>
 	  </div>
 	</article>
 	{% endfor %}
-	<a href="{{url_for('main.new_post')}}">Create A New Post!</a>
+	<a href="{{url_for('forum.new_post')}}">Create A New Post!</a>
 </div>
 
 {% endblock %}
