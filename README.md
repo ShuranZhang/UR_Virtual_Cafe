@@ -1,4 +1,4 @@
-To Run the Project
+To Run the Project on Mac
 
 cd to the project directory
 
@@ -13,6 +13,7 @@ export FLASK_ENV=development
 pip install -r requirements.txt
 
 flask run
+
 
 To Run the Project on Window
 
