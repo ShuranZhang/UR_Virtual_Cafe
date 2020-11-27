@@ -1,13 +1,5 @@
-To Create Database
-------------------------------------------------
-first enter python interactive
-
-from project import db, create_app
-
-db.create_all(app=create_app())
-
 To Run the Project on Mac
-------------------------------------------------
+
 cd to the project directory
 
 python3 -m venv auth
@@ -24,7 +16,7 @@ flask run
 
 
 To Run the Project on Window
-------------------------------------------------
+
 cd to the project directory
 
 py -3 -m venv auth
@@ -33,7 +25,7 @@ auth\Scripts\activate
 
 set FLASK_APP=project
 
-set FLASK_ENV=development
+export FLASK_ENV=development
 
 pip install -r requirements.txt
 

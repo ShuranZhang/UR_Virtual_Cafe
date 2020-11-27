@@ -1,4 +1,6 @@
-from flask import Blueprint, render_template
+from flask.helpers import flash
+from project.models import Post
+from flask import Blueprint, render_template, url_for, flash, redirect, request, abort
 from flask_login import login_required, current_user
 from . import db
 
@@ -11,7 +13,8 @@ def index():
 @main.route('/forum')
 @login_required
 def forum():
-    return render_template('forum.html', name=current_user.name)
+    posts = Post.query.all()
+    return render_template('forum.html', name=current_user.name, posts=posts)
 
 @main.route('/profile')
 @login_required
