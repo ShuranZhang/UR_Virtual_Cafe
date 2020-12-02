@@ -14,7 +14,7 @@ def index():
 @login_required
 def forum():
     posts = Post.query.all()
-    return render_template('forum.html', name=current_user.name, posts=posts)
+    return render_template('forum.html', posts=posts, current_user=current_user)
 
 @main.route('/profile')
 @login_required

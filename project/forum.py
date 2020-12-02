@@ -15,6 +15,30 @@ def new_post():
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!','success')
-        return redirect(url_for('main.forum'))
+        return redirect(url_for('main.forum', _external=True))
     return render_template('create_post.html',title='New Post',name=current_user.name, form=form)
 
+
+@forum.route('/post/update/<int:id>', methods = ['POST', 'GET'])
+@login_required
+def update_post(id):
+    post = Post.query.get_or_404(id)
+    form = PostForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            post.title = form.title.data
+            post.content = form.content.data
+            db.session.add(post)
+            db.session.commit()
+            flash('Your post has been updated!')        
+        return redirect(url_for('main.forum', _external=True))
+    else:
+        return render_template('update_post.html', current_user=current_user, post=post, form=form)
+
+@forum.route('/post/delete/<int:id>', methods = ['POST', 'GET'])
+@login_required
+def delete_post(id):
+    post = Post.query.get_or_404(id)
+    db.session.delete(post)
+    db.session.commit()
+    return redirect(url_for('main.forum', _external=True))

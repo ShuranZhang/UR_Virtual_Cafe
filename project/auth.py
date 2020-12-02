@@ -57,7 +57,7 @@ def signup_post():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.index', _external=True))
 
 #Update user's account information
 #If email already exist, it will flash a message

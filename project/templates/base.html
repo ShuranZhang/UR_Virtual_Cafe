@@ -26,17 +26,17 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}" class="navbar-item">Home</a></li>
+                <li><a href="{{ url_for('main.index', _external=True) }}" class="navbar-item">Home</a></li>
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('main.forum') }}" class="navbar-item">Virtual Cafe</a></li>
-                <li><a href="{{ url_for('main.profile') }}" class="navbar-item">Profile</a></li>
+                <li><a href="{{ url_for('main.forum', _external=True) }}" class="navbar-item">Virtual Cafe</a></li>
+                <li><a href="{{ url_for('main.profile', _external=True) }}" class="navbar-item">Profile</a></li>
                 {% endif %}
                 {% if not current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.login') }}" class="navbar-item">Login</a></li>
-                <li><a href="{{ url_for('auth.signup') }}" class="navbar-item">Sign Up</a></li>
+                <li><a href="{{ url_for('auth.login', _external=True) }}" class="navbar-item">Login</a></li>
+                <li><a href="{{ url_for('auth.signup', _external=True) }}" class="navbar-item">Sign Up</a></li>
                 {% endif %}
                 {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('auth.logout') }}" class="navbar-item">Logout</a></li>
+                <li><a href="{{ url_for('auth.logout', _external=True) }}" class="navbar-item">Logout</a></li>
                 {% endif %}
             </ul>
             <!-- <ul class="nav navbar-nav">

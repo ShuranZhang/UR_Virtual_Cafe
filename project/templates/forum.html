@@ -3,8 +3,13 @@
 {% block content %}
 <div class="container">
 	<h1 class="title">
-	{{ name }}, Welcome to the UR Virtual Cafe
+	{{ current_user.name }}, Welcome to the UR Virtual Cafe
 	</h1>
+	{% for messages in get_flashed_messages() %}
+	<div class="notification is-danger">
+		{{ messages }}
+	</div>
+	{% endfor %}
 	{% for post in posts %}
 	<article class="media content-section">
 	 
@@ -14,9 +19,17 @@
 		
 		<p class="article-content">{{ post.content }}</p>
 	  </div>
+	  {% if post.author.id == current_user.id %}
+	  	<div class="pro-group">
+			<a href="{{ url_for('forum.update_post', id=post.id, _external=True) }}">Update Post</a>
+		</div>
+		<div class="pro-group">
+			<a href="{{ url_for('forum.delete_post', id=post.id, _external=True) }}">Delete Post</a>
+		</div>
+	  {% endif %}
 	</article>
 	{% endfor %}
-	<a href="{{url_for('forum.new_post')}}">Create A New Post!</a>
+	<a href="{{url_for('forum.new_post', _external=True)}}">Create A New Post!</a>
 </div>
 
 {% endblock %}
