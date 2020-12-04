@@ -2,34 +2,36 @@
 
 {% block content %}
 <div class="container">
-	<h1 class="title">
-	{{ current_user.name }}, Welcome to the UR Virtual Cafe
+	<h1 class="page-header" style="color: white;">
+	{{ current_user.name }}, Welcome to the UR Virtual Cafe!
 	</h1>
+	<a class="btn btn-primary" href="{{url_for('forum.new_post', _external=True)}}">Create A New Post!</a>
 	{% for messages in get_flashed_messages() %}
 	<div class="notification is-danger">
 		{{ messages }}
 	</div>
 	{% endfor %}
 	{% for post in posts %}
-	<article class="media content-section">
-	 
-	  <div class="media-body">
-		<h3>{{ post.title }}</h3>
-		<p>by {{ post.author.name}} on {{ post.date_posted.strftime('%m/%d/%Y') }}</p>
-		
-		<p class="article-content">{{ post.content }}</p>
+	<div class="card" style="margin-bottom: 30px;">
+	  	<h3 class="card-header" style="margin-left: 10px; color:#245cab">
+	  		{{ post.title }}
+	  		<hr>
+		</h3>
+		<div class="card-body">
+			<h5 class="card-title" style="margin-left: 10px; color:#298070">
+			{{post.author.name}} Posted on {{ post.date_posted.strftime('%m/%d/%Y') }}:
+		    </h5>
+			<p class="card-text" style="margin-left: 10px; color:#245cab;">{{ post.content }}</p>
+		    {% if post.author.id == current_user.id %}
+		    <div style="margin-left: 10px">
+				<a class="btn btn-warning" href="{{ url_for('forum.update_post', id=post.id, _external=True) }}">Update Post</a>
+				<a class="btn btn-danger" href="{{ url_for('forum.delete_post', id=post.id, _external=True) }}">Delete Post</a>
+				<hr>
+			</div>
+    {% endif %}
 	  </div>
-	  {% if post.author.id == current_user.id %}
-	  	<div class="pro-group">
-			<a href="{{ url_for('forum.update_post', id=post.id, _external=True) }}">Update Post</a>
-		</div>
-		<div class="pro-group">
-			<a href="{{ url_for('forum.delete_post', id=post.id, _external=True) }}">Delete Post</a>
-		</div>
-	  {% endif %}
-	</article>
+	</div>
 	{% endfor %}
-	<a href="{{url_for('forum.new_post', _external=True)}}">Create A New Post!</a>
 </div>
 
 {% endblock %}
