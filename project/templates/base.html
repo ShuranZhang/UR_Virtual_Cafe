@@ -10,10 +10,37 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<style type="text/css">
+    .rgba-gradient {
+        background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
+        background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+        background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+    }
+    .nav.navbar-nav.navbar-right li a{
+        color: white;
+    }
+/*    .view{
+        height: 1500px;
+    }*/
+    .nav.navbar-nav li a{
+        color: white;
+    }
+    .card {
+        background-color: white;
+        opacity: 0.7;
+    }
+</style>
 {% endblock %}
 
 {% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
+<!-- <div class="group_banner">
+    <img src="{{ url_for('static', filename='banner.jpg') }}" class="imgresponsive_max" alt="University of Rochester Banner" />
+</div> -->
+<div class="view" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/architecture.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+<div class="mask rgba-gradient">
+<div nav class="navbar" style="opacity: 0.8;" role="navigation">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -22,7 +49,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">UR Virtual Cafe</a>
+            <a class="navbar-brand" href="/" style="color:white;">UR Virtual Cafe</a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
@@ -39,10 +66,6 @@
                 <li><a href="{{ url_for('auth.logout', _external=True) }}" class="navbar-item">Logout</a></li>
                 {% endif %}
             </ul>
-            <!-- <ul class="nav navbar-nav">
-                <li><a href="/ingredientsDatabase">IngredientsDb</a></li>
-            </ul>
- -->
         </div>
     </div>
 </div>
@@ -51,6 +74,8 @@
 {% block content %}
 <div class="container">
     {% block page_content %}{% endblock %}
+</div>
+</div>
 </div>
 {% endblock %}
 
