@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container">
+<div class="container" >
+
 	<h1 class="page-header" style="color: white;">
 	{{ current_user.name }}, Welcome to the UR Virtual Cafe!
 	</h1>
@@ -11,25 +12,25 @@
 		{{ messages }}
 	</div>
 	{% endfor %}
-	{% for post in posts %}
+	{% for post in posts | reverse %}
 	<div class="card" style="margin-bottom: 30px;">
-	  	<h3 class="card-header" style="margin-left: 10px; color:#245cab">
-	  		{{ post.title }}
-	  		<hr>
-		</h3>
+	  	<div class="card-header" style="margin: 10px; color:#245cab">
+	  		<h3>{{ post.title }}</h3>
+		</div>
+
 		<div class="card-body">
-			<h5 class="card-title" style="margin-left: 10px; color:#298070">
+			<h5 class="card-title" style="margin: 10px; color:#298070">
 			{{post.author.name}} Posted on {{ post.date_posted.strftime('%m/%d/%Y') }}:
 		    </h5>
-			<p class="card-text" style="margin-left: 10px; color:#245cab;">{{ post.content }}</p>
+			<p class="card-text" style="margin: 10px; color:#292929;">{{ post.content }}</p>
 		    {% if post.author.id == current_user.id %}
 		    <div style="margin-left: 10px">
 				<a class="btn btn-warning" href="{{ url_for('forum.update_post', id=post.id, _external=True) }}">Update Post</a>
 				<a class="btn btn-danger" href="{{ url_for('forum.delete_post', id=post.id, _external=True) }}">Delete Post</a>
 				<hr>
 			</div>
-    {% endif %}
-	  </div>
+    		{% endif %}
+	  	</div>
 	</div>
 	{% endfor %}
 </div>
