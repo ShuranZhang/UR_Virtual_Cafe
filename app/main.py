@@ -1,5 +1,5 @@
 from flask.helpers import flash
-from project.models import Post
+from app.models import Post
 from flask import Blueprint, render_template, url_for, flash, redirect, request, abort
 from flask_login import login_required, current_user
 from . import db
