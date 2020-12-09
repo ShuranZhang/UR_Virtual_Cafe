@@ -21,11 +21,11 @@ cd to the project directory
 
 py -3 -m venv auth
 
-auth\Scripts\activate
+.\auth\Scripts\activate
 
 set FLASK_APP=project
 
-export FLASK_ENV=development
+set FLASK_ENV=development
 
 pip install -r requirements.txt
 
